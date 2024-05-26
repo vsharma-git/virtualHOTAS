@@ -1,6 +1,6 @@
 # Virtual HOTAS
 
-A customizable virtual controller to play flight sims. Supports phone only and phone with controller .
+A customizable virtual controller to play flight sims. Supports both modes - phone only and phone with controller.
 
 ## Background
 
@@ -8,7 +8,7 @@ It is hard to play flight simulators without a Hands On Throttle-And-Stick (HOTA
 
 This app converts your phone into a virtual HOTAS. You can now control your throttle and flaps using sliders, and your joystick using your phone's sensors.
 
-Extend the capability of the app by pairing a controller.
+You can also extend the capability of the app by pairing a controller.
 
 ## Demo
 
