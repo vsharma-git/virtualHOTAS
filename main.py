@@ -18,6 +18,9 @@ gamepadStatus = False
 
 buttonState =  ['0']*32
 
+
+
+
 def setup():
     '''
     This will always connect to VJoyDevice: 1. 
@@ -25,6 +28,16 @@ def setup():
     '''
     global virtual_joystick
     virtual_joystick = VJoyDevice(1)
+    virtual_joystick.data.wAxisXRot = 0
+    virtual_joystick.data.wAxisYRot = 16383
+    virtual_joystick.data.wAxisZRot = 0
+    virtual_joystick.data.wAxisX = 16383
+    virtual_joystick.data.wAxisY = 16383
+    
+    buttonState = ['0'] * 32
+    buttonState = ''.join(buttonState)
+    virtual_joystick.data.lButtons = int(buttonState,2)  
+    virtual_joystick.update()
 
 def map_value(value, in_min, in_max, out_min, out_max):
     '''
@@ -95,7 +108,7 @@ def handle_orientation(data):
     global pitch, yaw, roll
     print(f"Received Orientation Data: {data}")
     pitch = pitchHome-data['pitch'] #beta
-    pitch_mapped = map_value(pitch, -25, 25, 0, 32767)
+    pitch_mapped = map_value(pitch, -25, 25, -32767,0)*-1
     yaw = yawHome-data['yaw'] #alpha
     yaw_mapped = map_value(yaw, -30, 30, 0, 32767)
     roll = rollHome-data['roll'] #gamma
@@ -103,9 +116,9 @@ def handle_orientation(data):
     # print(f"pitch: {pitch_mapped}, yaw: {yaw_mapped}, roll: {roll_mapped}")    
     # print(pitch," ",pitchHome," ", data['pitch'])
     # Update the virtual joystick state
-    virtual_joystick.data.wAxisXRot = int(pitch_mapped)
+    virtual_joystick.data.wAxisXRot = int(roll_mapped)
     virtual_joystick.data.wAxisYRot = int(yaw_mapped)
-    virtual_joystick.data.wAxisZRot = int(roll_mapped)
+    virtual_joystick.data.wAxisZRot = int(pitch_mapped)
 
     virtual_joystick.update()
     socketio.emit('orientation_updated', {'pitch': map_value(virtual_joystick.data.wAxisXRot,0,32767,-25,25),'roll': map_value(virtual_joystick.data.wAxisYRot,0,32767,-30,30),'yaw':map_value(virtual_joystick.data.wAxisZRot,0,32767,-20,20)})
@@ -223,8 +236,9 @@ def getGamepadConnectionStatus(data):
     virtual_joystick.data.wAxisXRot = 0
     virtual_joystick.data.wAxisYRot = 16383
     virtual_joystick.data.wAxisZRot = 0
-    virtual_joystick.data.wAxisX = 0
-    virtual_joystick.data.wAxisY = 0
+    virtual_joystick.data.wAxisX = 16383
+    virtual_joystick.data.wAxisY = 16383
+    
     buttonState = ['0'] * 32
     buttonState = ''.join(buttonState)
     virtual_joystick.data.lButtons = int(buttonState,2)  
