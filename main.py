@@ -138,12 +138,9 @@ def handle_orientation_home(data):
         pitchHome = 0
         yawHome = 0
         rollHome = 0
-        pitch = 0
-        yaw = 0
-        roll = 0
-        virtual_joystick.data.wAxisXRot = 0
+        virtual_joystick.data.wAxisXRot = 16383
         virtual_joystick.data.wAxisYRot = 16383
-        virtual_joystick.data.wAxisZRot = 0
+        virtual_joystick.data.wAxisZRot = 16383
         virtual_joystick.update()
 
     else:
