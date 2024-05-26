@@ -131,6 +131,8 @@ def handle_orientation_home(data):
         virtual_joystick.data.wAxisXRot = 0
         virtual_joystick.data.wAxisYRot = 16383
         virtual_joystick.data.wAxisZRot = 0
+        virtual_joystick.update()
+
     else:
         print("Gamepad Disconnected")
         pitchHome = data['pitch']
@@ -230,4 +232,4 @@ def getGamepadConnectionStatus(data):
 
 if __name__ == '__main__':
     # socketio.run(app, debug=True)
-    socketio.run(app, debug=True,host='192.168.1.23', port=5000)
+    socketio.run(app, debug=True,host='0.0.0.0', port=5000)
