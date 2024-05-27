@@ -10,15 +10,14 @@ This app converts your phone into a virtual HOTAS. You can now control your thro
 
 You can also extend the capability of the app by pairing a controller.
 
-## Demos
-Youtube demo - 
-https://youtu.be/bFi3iqamPNk 
+## Demo
+[![Virtual HOTAS Demo](docs/youtube-thumbnail.png)](https://youtu.be/bFi3iqamPNk)
 
 
 ## Table of contents
 - [Virtual HOTAS](#virtual-hotas)
   - [Background](#background)
-  - [Demos](#demos)
+  - [Demo](#demo)
   - [Table of contents](#table-of-contents)
   - [🎁 Installation](#-installation)
   - [🏃‍♀️ Quick Start](#️-quick-start)
