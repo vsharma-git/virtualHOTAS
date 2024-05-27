@@ -10,18 +10,17 @@ This app converts your phone into a virtual HOTAS. You can now control your thro
 
 You can also extend the capability of the app by pairing a controller.
 
-## Demo
+## Demos
+Youtube demo - 
+https://youtu.be/bFi3iqamPNk 
 
-
-https://github.com/vsharma-git/virtualHOTAS/assets/170828557/f334f5b5-05bd-43d6-a0e8-8ef1b0668705
-
-
+Github-hosted demo - https://github.com/vsharma-git/virtualHOTAS/assets/170828557/f334f5b5-05bd-43d6-a0e8-8ef1b0668705
 
 
 ## Table of contents
 - [Virtual HOTAS](#virtual-hotas)
   - [Background](#background)
-  - [Demo](#demo)
+  - [Demos](#demos)
   - [Table of contents](#table-of-contents)
   - [🎁 Installation](#-installation)
   - [🏃‍♀️ Quick Start](#️-quick-start)
@@ -34,11 +33,15 @@ https://github.com/vsharma-git/virtualHOTAS/assets/170828557/f334f5b5-05bd-43d6-
     - [Change sliders](#change-sliders)
     - [Add buttons](#add-buttons)
   - [❔ Troubleshooting](#-troubleshooting)
+    - [I can't figure out how to fly](#i-cant-figure-out-how-to-fly)
     - [General troubleshooting steps](#general-troubleshooting-steps)
     - [Throttle in Microsoft Flight Simulator is erratic](#throttle-in-microsoft-flight-simulator-is-erratic)
     - [How do I know I'm connected?](#how-do-i-know-im-connected)
   - [🚀 Beyond HOTAS](#-beyond-hotas)
   - [🗺 Roadmap](#-roadmap)
+  - [Keybindings -](#keybindings--)
+    - [Phone only -](#phone-only--)
+    - [Phone with Backbone -](#phone-with-backbone--)
 
 
 ## 🎁 Installation
@@ -121,6 +124,9 @@ Open vJoyMonitor to check if the input is being reported correctly.
 
 ## ❔ Troubleshooting
 
+### I can't figure out how to fly 
+Tap the reset button while flying to level the aircraft. Make small adjustments to your phone and you'll get the hang of it. 
+
 ### General troubleshooting steps
 Run python app again and then refresh webpage.
 Refresh webpage.
@@ -140,3 +146,12 @@ Open vJoy Monitor and look see if your input is being registered.
 
 ## 🗺 Roadmap
 - Update logic of UI buttons to report long press. Right now, I can only record a tap but not long or sustained button presses.
+
+## Keybindings - 
+### Phone only - 
+The buttons on the UI will register as 21 and beyond on vJoy
+https://youtu.be/crPxxUd480M
+
+### Phone with Backbone -
+All the buttons and axes of Backbone are mapped in the order in which they are reported from the controller.
+https://youtu.be/ZmDCDITcV3w
