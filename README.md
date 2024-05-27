@@ -14,9 +14,6 @@ You can also extend the capability of the app by pairing a controller.
 Youtube demo - 
 https://youtu.be/bFi3iqamPNk 
 
-Github-hosted demo - \
-https://github.com/vsharma-git/virtualHOTAS/assets/170828557/f334f5b5-05bd-43d6-a0e8-8ef1b0668705
-
 
 ## Table of contents
 - [Virtual HOTAS](#virtual-hotas)
