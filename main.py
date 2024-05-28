@@ -26,9 +26,9 @@ def setup():
     '''
     global virtual_joystick
     virtual_joystick = VJoyDevice(1)
-    virtual_joystick.data.wAxisXRot = 0
+    virtual_joystick.data.wAxisXRot = 16383
     virtual_joystick.data.wAxisYRot = 16383
-    virtual_joystick.data.wAxisZRot = 0
+    virtual_joystick.data.wAxisZRot = 16383
     virtual_joystick.data.wAxisX = 16383
     virtual_joystick.data.wAxisY = 16383
     
