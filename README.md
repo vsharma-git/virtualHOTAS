@@ -94,8 +94,7 @@ To keep things simple. All css, body and scripts are in index.html.
 
 ### Change button names
 
-Change the text in the button
-
+Change the text in the button. [Link to Video](https://www.youtube.com/watch?v=3c44_TCB0uI)
 ```html
 <button class="btn btn-primary button" onclick="buttonPress(1)">Gear Up</button>
 ```
