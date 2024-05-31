@@ -206,7 +206,7 @@ def handle_button_press(data):
     
     '''
     # setup()
-    print(data["button"])
+    # print(data["button"])
     # print("virtual_joystick.data.lButtons",virtual_joystick.data.lButtons)
     # buttonState = ['0'] * 32
     # buttonState[-int(data["button"])] = '1'

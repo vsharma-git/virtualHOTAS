@@ -23,13 +23,10 @@
       .grid-container {
         display: grid;
 
-        grid-template-rows: 1fr 1fr 1fr;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 0.25fr 1fr;
 
-        grid-template-areas:
-          "flaps btn1 btn4 btn3 throttle"
-          "flaps btn2 btn5 btn6 throttle"
-          "flaps reset reset reset throttle";
+        grid-template-areas: "leftRudder fullScreen rightRudder";
 
         gap: 10px;
         height: calc(100vh - 10px);
@@ -37,139 +34,47 @@
         place-items: stretch;
       }
 
-      .item-flaps {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #efefef;
-        grid-area: flaps;
-        flex-direction: column;
-      }
-      .item-throttle {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #efefef;
-        grid-area: throttle;
-        flex-direction: column;
-      }
-
-      b {
-        text-align: center;
-      }
-
-      .item-btn1 {
-        grid-area: btn1;
+      .left-rudder {
+        grid-area: leftRudder;
         justify-self: stretch;
       }
-      .item-btn2 {
-        grid-area: btn2;
+      .fullscreen {
+        grid-area: fullScreen;
+        justify-self: stretch;
       }
-      .item-btn3 {
-        grid-area: btn3;
+      .right-rudder {
+        grid-area: rightRudder;
+        justify-self: stretch;
       }
-      .item-btn4 {
-        grid-area: btn4;
-      }
-      .item-btn5 {
-        grid-area: btn5;
-      }
-      .item-btn6 {
-        grid-area: btn6;
-      }
-      .item-reset {
-        grid-area: reset;
-      }
+
       .button {
         width: 100%;
         height: 100%;
         font-size: large;
       }
-      .slider-container {
-        width: 30px;
-        height: calc(100% - 40px);
-        padding-top: 20px;
-        padding-bottom: 20px;
-      }
-
-      #throttleSlider {
-        height: 100%;
-        width: 30px;
-      }
-      #throttleSlider .noUi-handle {
-        position: absolute;
-        height: 50px;
-        width: 80px;
-        right: -27px;
-      }
-
-      #throttleSlider .noUi-handle::after {
-        display: none;
-      }
-
-      #throttleSlider .noUi-handle::before {
-        display: none;
-      }
-
-      #flapsSlider {
-        height: 100%;
-        width: 30px;
-      }
-      #flapsSlider .noUi-handle {
-        position: absolute;
-        height: 50px;
-        width: 80px;
-        right: -27px;
-      }
-
-      #flapsSlider .noUi-handle::after {
-        display: none;
-      }
-
-      #flapsSlider .noUi-handle::before {
-        display: none;
-      }
     </style>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
   </head>
   <body>
     <div class="grid-container">
-      <div class="item-flaps">
-        <p><b>Flaps</b></p>
-        <div class="slider-container">
-          <div id="flapsSlider"></div>
-        </div>
-      </div>
-      <div class="item-throttle">
-        <p><b>Throttle</b></p>
-        <div class="slider-container">
-          <div id="throttleSlider"></div>
-        </div>
-      </div>
-      <button class="item-btn1 btn btn-primary button" onpointerdown="buttonPress(21)" onpointerup="buttonRelease(21)">Gear Up</button>
-      <button class="item-btn2 btn btn-primary button" onpointerdown="buttonPress(22)" onpointerup="buttonRelease(22)">Gear Down</button>
-      <button class="item-btn3 btn btn-primary button" onpointerdown="buttonPress(23)" onpointerup="buttonRelease(23)">
-        Prkng Brk Toggle
+      <button
+        class="leftRudder btn btn-primary button"
+        onpointerdown="buttonPress(21)"
+        onpointerup="buttonRelease(21)"
+      >
+        Left Rudder
       </button>
-      <button class="item-btn4 btn btn-primary button" onpointerdown="buttonPress(24)" onpointerup="buttonRelease(24)">
-        Cycle Camera
-      </button>
-      <button class="item-btn5 btn btn-primary button" onpointerdown="buttonPress(25)" onpointerup="buttonRelease(25)">
-        Active Pause
-      </button>
-      <button class="item-btn6 btn btn-primary button" onpointerdown="toggleFullscreen()">
+
+      <button class="fullScreen btn btn-primary button" onpointerdown="toggleFullscreen()">
         Full Screen
       </button>
-      <button class="item-reset btn btn-primary button" onpointerdown="homeOrientation()">
-        Reset Rotation
-        <p id="orientation">
-          <output id="pitch"></output>° <output id="roll"></output>° <output id="yaw"></output>°
-        </p>
-        <!-- <div id="axisinfo">axis</div> -->
-        <p id="status"></p>
-        <!-- <div id="gamepad-info"></div> -->
+      <button
+        class="rightRudder btn btn-primary button"
+        onpointerdown="buttonPress(22)"
+        onpointerup="buttonRelease(22)"
+      >
+        Right Rudder
       </button>
     </div>
 
@@ -194,109 +99,25 @@
        */
       window.addEventListener("gamepadconnected", (event) => {
         const gp = event.gamepad;
-        document.getElementById("status").innerText = `🎮 Gamepad connected 🎮`;
         // document.getElementById("status").innerText = `Gamepad connected: ${gp.id}`;
         gamepadAttached = true;
         updateStatus();
         socket.emit("gamepadConnection", {
           connected: true,
         });
-        document.getElementById("orientation").style.visibility = "hidden";
       });
 
       /**
        * If gamepad is disconnected socket.emit status show hide orientation values in UI
        */
       window.addEventListener("gamepaddisconnected", (event) => {
-        document.getElementById("status").innerText = "";
-        // document.getElementById("status").innerText = "Gamepad disconnected.";
         gamepadAttached = false;
         socket.emit("gamepadConnection", {
           connected: false,
         });
-        document.getElementById("orientation").style.visibility = "visible";
       });
 
-      document.addEventListener("DOMContentLoaded", function () {
-        /**
-         * Make the vertical slider for Throttle
-         */
-        const verticalSlider_throttle = document.getElementById("throttleSlider");
-
-        noUiSlider.create(verticalSlider_throttle, {
-          start: 40,
-          orientation: "vertical",
-          connect: "lower",
-          direction: "rtl",
-          tooltips: {
-            to: function (value) {
-              return Math.round((value / 32700) * 100);
-            },
-          },
-          range: {
-            min: 0,
-            max: 32700,
-          },
-        });
-        verticalSlider_throttle.noUiSlider.on("update", function (values, handle, unencoded) {
-          socket.emit("update_joystick_throttle", {
-            joystick_value: Number(values[handle]),
-          });
-        });
-
-        /**
-         * Make the vertical slider for Flaps
-         */
-        const verticalSlider_flaps = document.getElementById("flapsSlider");
-
-        noUiSlider.create(verticalSlider_flaps, {
-          start: 40,
-          orientation: "vertical",
-          connect: "lower",
-          direction: "rtl",
-          tooltips: {
-            to: function (value) {
-              return Math.round((value / 32700) * 100);
-            },
-          },
-          range: {
-            min: 0,
-            max: 32700,
-          },
-        });
-        verticalSlider_flaps.noUiSlider.on("update", function (values, handle, unencoded) {
-          socket.emit("update_joystick_flaps", {
-            flaps_value: Number(values[handle]),
-          });
-        });
-      });
-
-      /**
-       * If browser supports motion sensors and gamepad is not attached then socket.emit the orientation data.
-       */
-      if (window.DeviceOrientationEvent && !gamepadAttached) {
-        let once = false;
-        let throttleTimeout;
-
-        window.addEventListener("deviceorientationabsolute", function (event) {
-          if (!once) {
-            let data = {
-              yaw: event.alpha,
-              pitch: event.beta,
-              roll: event.gamma,
-            };
-            socket.emit("orientationPhone", data);
-            once = true;
-
-            throttleTimeout = setTimeout(function () {
-              once = false;
-            }, 50);
-          }
-        });
-      } else {
-        alert("Device does not support DeviceOrientationEvent");
-      }
-
+      
       /**
        * Logic to get the button and axes data from the gamepad.
        */
@@ -362,7 +183,7 @@
           button: data,
         });
       }
- 
+
       /**
        * Handle button release from the UI
        */
