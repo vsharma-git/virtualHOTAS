@@ -191,7 +191,32 @@ def handle_button_press(data):
     # flip_bit_prep(1)
     virtual_joystick.update()
     
-    time.sleep(0.25)    
+    # time.sleep(0.25)    
+    # buttonState = ['0'] * 32
+    # flipped_binary_string = ''.join(buttonState)
+    # virtual_joystick.data.lButtons = int(flipped_binary_string,2)  
+    # # flip_bit_prep(1)
+    # virtual_joystick.update()
+    
+@socketio.on('button_release')
+def handle_button_press(data):
+    '''
+    When a button is pressed, the virtual joystick's button state is updated.
+    To simulate a button press, the virtual joystick's button state is flipped after 0.25 seconds
+    
+    '''
+    # setup()
+    print(data["button"])
+    # print("virtual_joystick.data.lButtons",virtual_joystick.data.lButtons)
+    # buttonState = ['0'] * 32
+    # buttonState[-int(data["button"])] = '1'
+    # flipped_binary_string = ''.join(buttonState)
+    # # print(buttonState)
+    # virtual_joystick.data.lButtons = int(flipped_binary_string,2)  
+    # # flip_bit_prep(1)
+    # virtual_joystick.update()
+    
+    # time.sleep(0.25)    
     buttonState = ['0'] * 32
     flipped_binary_string = ''.join(buttonState)
     virtual_joystick.data.lButtons = int(flipped_binary_string,2)  

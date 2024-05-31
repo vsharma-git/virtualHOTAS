@@ -148,21 +148,21 @@
           <div id="throttleSlider"></div>
         </div>
       </div>
-      <button class="item-btn1 btn btn-primary button" onclick="buttonPress(21)">Gear Up</button>
-      <button class="item-btn2 btn btn-primary button" onclick="buttonPress(22)">Gear Down</button>
-      <button class="item-btn3 btn btn-primary button" onclick="buttonPress(23)">
+      <button class="item-btn1 btn btn-primary button" onpointerdown="buttonPress(21)" onpointerup="buttonRelease(21)">Gear Up</button>
+      <button class="item-btn2 btn btn-primary button" onpointerdown="buttonPress(22)" onpointerup="buttonRelease(22)">Gear Down</button>
+      <button class="item-btn3 btn btn-primary button" onpointerdown="buttonPress(23)" onpointerup="buttonRelease(23)">
         Prkng Brk Toggle
       </button>
-      <button class="item-btn4 btn btn-primary button" onclick="buttonPress(24)">
+      <button class="item-btn4 btn btn-primary button" onpointerdown="buttonPress(24)" onpointerup="buttonRelease(24)">
         Cycle Camera
       </button>
-      <button class="item-btn5 btn btn-primary button" onclick="buttonPress(25)">
+      <button class="item-btn5 btn btn-primary button" onpointerdown="buttonPress(25)" onpointerup="buttonRelease(25)">
         Active Pause
       </button>
-      <button class="item-btn6 btn btn-primary button" onclick="toggleFullscreen()">
+      <button class="item-btn6 btn btn-primary button" onpointerdown="toggleFullscreen()">
         Full Screen
       </button>
-      <button class="item-reset btn btn-primary button" onclick="homeOrientation()">
+      <button class="item-reset btn btn-primary button" onpointerdown="homeOrientation()">
         Reset Rotation
         <p id="orientation">
           <output id="pitch"></output>° <output id="roll"></output>° <output id="yaw"></output>°
@@ -359,6 +359,15 @@
        */
       function buttonPress(data) {
         socket.emit("button_press", {
+          button: data,
+        });
+      }
+ 
+      /**
+       * Handle button release from the UI
+       */
+      function buttonRelease(data) {
+        socket.emit("button_release", {
           button: data,
         });
       }

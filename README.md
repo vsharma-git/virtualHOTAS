@@ -142,7 +142,8 @@ Open vJoy Monitor and look see if your input is being registered.
 2. Stream deck - you know how to make a UI and send inputs, it should be possible to connect to an API for OBS. 
 
 ## 🗺 Roadmap
-- Update logic of UI buttons to report long press. Right now, I can only record a tap but not long or sustained button presses.
+- (✔ Done 30MAY2024) Update logic of UI buttons to report long press. Right now, I can only record a tap but not long or sustained button presses.
+- Update logic of the css grid so that adding buttons does not require updating CSS for each button. 
 
 ## 🎹 Keybindings 
 ### Phone only
