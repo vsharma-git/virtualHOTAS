@@ -2,6 +2,10 @@
 
 A customizable virtual controller to play flight sims. Supports both modes - phone only and phone with controller.
 
+## ⚠ CUSTOMIZED UI ⚠ : Rudder Pedals Only
+This was a requested feature. 
+This branch has the UI configured such that there are only rudder pedals for buttons. The phone sensor based joystick is disabled. Gamepad compatibility is retained. 
+
 ## Background
 
 It is hard to play flight simulators without a Hands On Throttle-And-Stick (HOTAS). To accurately control the throttle, you need to know its position at all time, keyboards and controllers can't do that. To control the joystick, you need analog input, most keyboards cant do that but controllers are great at it. 
@@ -16,6 +20,7 @@ You can also extend the capability of the app by pairing a controller.
 
 ## Table of contents
 - [Virtual HOTAS](#virtual-hotas)
+  - [⚠ CUSTOMIZED UI ⚠ : Rudder Pedals Only](#-customized-ui---rudder-pedals-only)
   - [Background](#background)
   - [Demo](#demo)
   - [Table of contents](#table-of-contents)
