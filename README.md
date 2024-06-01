@@ -43,16 +43,18 @@ You can also extend the capability of the app by pairing a controller.
 
 ## 🎁 Installation
 
-1. Install vJoy https://www.vjoy.org/download-for-windows
-
-2. Installing the app
-
-   1. Download this repo.
-   2. Extract the downloaded file.
-   3. Open the folder.
-   4. Run installer.bat
-
-3. Configure vJoy \
+1. Download and install vJoy from https://www.vjoy.org/download-for-windows.
+2. Download and install Python https://www.python.org/downloads/.
+3. Install the app
+![Installation steps](docs/installation-steps-with-arrows.png)
+   1. Navigate to the repo in your browser.
+   2. Click on Code.
+   3. Click on Download ZIP.
+   4. Right click on the downloaded ZIP file.
+   5. Extract the downloaded file.
+   6. Open the folder.
+   7. Run installer.bat.
+4. Configure vJoy \
 By default vJoy is set for 8 buttons. To make this app work with controllers, we need to set it to 32 buttons.
  ![vJoy configuration steps](docs/vjoy-config.png)
    1. Go to windows start menu
