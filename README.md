@@ -20,6 +20,8 @@ You can also extend the capability of the app by pairing a controller.
   - [Demo](#demo)
   - [Table of contents](#table-of-contents)
   - [🎁 Installation](#-installation)
+    - [Installing the app](#installing-the-app)
+    - [Configure vJoy](#configure-vjoy)
   - [🏃‍♀️ Quick Start](#️-quick-start)
   - [▶ Usage](#-usage)
   - [⭐ Features](#-features)
@@ -43,6 +45,7 @@ You can also extend the capability of the app by pairing a controller.
 
 ## 🎁 Installation
 
+### Installing the app
 You have two ways to install -
 
 - Using python environments
@@ -58,6 +61,15 @@ You have two ways to install -
   pip install flask-socketio
   pip install pyvjoy
   ```
+
+### Configure vJoy
+By default vJoy is set for 8 buttons. To make this app work with controllers, we need to set it to 32 buttons.
+ ![vJoy configuration steps](docs/vjoy-config.png)
+1. Go to windows start menu
+2. Search for vJoy
+3. Open Configure vJoy
+4. Change Number of Buttons to 32
+5. Click on Apply
 
 ## 🏃‍♀️ Quick Start
 
