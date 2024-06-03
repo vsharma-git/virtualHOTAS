@@ -48,32 +48,36 @@ You can also extend the capability of the app by pairing a controller.
 
 ## 🎁 Installation
 
-You have two ways to install -
-
-- Using python environments
-  1. Install vJoy https://www.vjoy.org/download-for-windows
-  1. Set up a python environment using the requirements.txt file in the repo.
-- Manual install
-
-  1. Install vJoy https://www.vjoy.org/download-for-windows
-  1. pip install flask, flask_socketio and pyvjoy.
-
-  ```bash
-  pip install Flask
-  pip install flask-socketio
-  pip install pyvjoy
-  ```
+1. Download and install vJoy from https://www.vjoy.org/download-for-windows.
+2. Download and install Python https://www.python.org/downloads/.
+3. Install the app
+![Installation steps](docs/installation-steps-with-arrows.png)
+   1. Navigate to the repo in your browser.
+   2. Click on Code.
+   3. Click on Download ZIP.
+   4. Right click on the downloaded ZIP file.
+   5. Extract the downloaded file.
+   6. Open the folder.
+   7. Run installer.bat.
+4. Configure vJoy \
+By default vJoy is set for 8 buttons. To make this app work with controllers, we need to set it to 32 buttons.
+ ![vJoy configuration steps](docs/vjoy-config.png)
+   1. Go to windows start menu
+   2. Search for vJoy
+   3. Open Configure vJoy
+   4. Change Number of Buttons to 32
+   5. Click on Apply
 
 ## 🏃‍♀️ Quick Start
 
 Complete [Installation](#installation) section. \
-Run main.py .\
+Double click on  run.bat\
 Navigate to the url on your phone. \
 Set up key bindings in Microsoft Flight Simulator.
 
 ## ▶ Usage
 
-- Run main.py.
+- Run main.py using this command (If using a virtual environment then, first activate it)
 - The terminal will give you the url of the server.
 - Open url on your phone.
 
