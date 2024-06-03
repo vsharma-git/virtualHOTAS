@@ -42,7 +42,9 @@ You can also extend the capability of the app by pairing a controller.
 
 
 ## 🎁 Installation
+Installation guide - https://youtu.be/EyKlp2h1qXQ
 
+Steps - 
 1. Download and install vJoy from https://www.vjoy.org/download-for-windows.
 2. Download and install Python https://www.python.org/downloads/.
 3. Install the app
