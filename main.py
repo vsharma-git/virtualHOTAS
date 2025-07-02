@@ -2,6 +2,12 @@ import time
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 from pyvjoy import VJoyDevice
+import io
+import qrcode
+import socket
+
+
+
 
 app = Flask(__name__)
 socketio = SocketIO(app,debug=True)
@@ -237,6 +243,25 @@ def getGamepadConnectionStatus(data):
     virtual_joystick.data.lButtons = int(buttonState,2)  
     virtual_joystick.update()
 
+def get_lan_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        # Doesn't have to be reachable
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+    finally:
+        s.close()
+    return ip
+
+
 if __name__ == '__main__':
     # socketio.run(app, debug=True)
-    socketio.run(app, debug=True,host='0.0.0.0', port=5000)
+    qr = qrcode.QRCode()
+    ip = get_lan_ip()
+    qr.add_data("http:"+ip+":5000")
+    f = io.StringIO()
+    qr.print_ascii(out=f)
+    f.seek(0)
+    print(f.read())
+    socketio.run(app, host='0.0.0.0', port=5000)
+
